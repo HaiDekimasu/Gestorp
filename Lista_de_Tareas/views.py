@@ -10,7 +10,7 @@ def index(request):
     context = {
         'listas': listas
     }
-    return render(request, 'lista/index.html', context)
+    return render(request, 'Lista/index.html', context)
     
 def view(request, id):
     lista = Lista.objects.get(id=id)
@@ -18,7 +18,7 @@ def view(request, id):
     context = {
         'lista': lista
     }
-    return render(request, 'lista/detail.html', context)
+    return render(request, 'Lista/detail.html', context)
 
 def edit(request, id):
     lista = Lista.objects.get(id=id)
@@ -29,7 +29,7 @@ def edit(request, id):
             'form': form,
             'id': id
         }
-        return render(request, 'lista/edit.html', context)
+        return render(request, 'Lista/edit.html', context)
     
     if(request.method == 'POST'):
         form = ListaForm(request.POST, instance= lista)
@@ -40,7 +40,7 @@ def edit(request, id):
             'id': id,
         }
         messages.success(request, ' Tarea Actualizada')
-        return render(request, 'lista/edit.html', context)
+        return render(request, 'Lista/edit.html', context)
     
 def create(request):
     if(request.method == 'GET'):
@@ -48,7 +48,7 @@ def create(request):
         context = {
             'form': form,
         }
-        return render(request, 'lista/create.html', context)
+        return render(request, 'Lista/create.html', context)
     
     if request.method == 'POST':
         form = ListaForm(request.POST)
